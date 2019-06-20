@@ -1,0 +1,74 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WorkoutApp"
+        xmlns:Controls="clr-namespace:wyDay.Controls;assembly=AutomaticUpdaterWPF" x:Class="WorkoutApp.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="451.779" Width="800" ResizeMode="NoResize">
+    <Grid Margin="0,0,0,88">
+        <Button HorizontalAlignment="Right" VerticalAlignment="Top" x:Name="Clear" Width="200" Height="50" Foreground="White" FontSize="20" Click="Clear_Click" Cursor="Hand" Content="Clear Workouts" Visibility="Hidden">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="Red" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="addButton" Width="200" Height="50" Foreground="White" FontSize="20" Click="AddButton_Click" Cursor="Hand" Content="Add Workout">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FF003AFF" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <StackPanel VerticalAlignment="Center"/>
+        <StackPanel VerticalAlignment="Center"/>
+        <StackPanel VerticalAlignment="Bottom"/>
+        <DataGrid  x:Name="workoutDataGrid" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Center" Height="234" Margin="12,93,12,0" VerticalAlignment="Top" Width="470">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Width="200" Binding="{Binding Name}" />
+                <DataGridTemplateColumn Width="80">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Delete" Click="DeleteButton_Click">
+                                <Button.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White" Offset="0"/>
+                                        <GradientStop Color="Red" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="START WORKOUT" Click="StartWorkout_Click">
+                                <Button.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White" Offset="0"/>
+                                        <GradientStop Color="#FFA2FF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="VeiwWorkoutsCom" Width="266" Height="50" Foreground="White" FontSize="20" Click="VeiwWorkoutsCom_Click" Cursor="Hand" Content="View Completed Workouts" Margin="206,2,0,0">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FF003AFF" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <TextBlock x:Name="UsernameTextblock" HorizontalAlignment="Left" Margin="558,12,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="20" Width="146"/>
+        <Controls:AutomaticUpdater HorizontalAlignment="Left" Height="34" Margin="678,92,0,0" VerticalAlignment="Top" Width="31" UpdateAvailable="AutomaticUpdater_UpdateAvailable"/>
+    </Grid>
+</Window>
